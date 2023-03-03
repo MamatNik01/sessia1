@@ -1,0 +1,38 @@
+﻿<Window x:Class="OOOMuscle.Tovar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOOMuscle"
+        mc:Ignorable="d"
+        Title="Tovar" Height="450" Width="800" FontSize="22" Icon="C:\Users\Nikita\Desktop\OOOMuscle\OOOMuscle\OOOMuscle\Files\win.png" FontFamily="Comic Sans MS" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="262*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="306*"/>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="211*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="3" Background="#FFAAFF97"/>
+        <Image HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="185" Stretch="Uniform" Source="Files/master.jpg"/>
+        <Label Content="Товар" Grid.Column="1" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Height="41" Width="72"/>
+        <Button x:Name="nazad" Content="Назад" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Height="64" Click="nazad_Click"/>
+        <Label Content="Сортировка" HorizontalAlignment="Left" Margin="89,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="130"/>
+        <Label Content="Категория" HorizontalAlignment="Left" Margin="68,5,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Height="41" Width="120" Grid.RowSpan="2"/>
+        <Label Content="Поиск" HorizontalAlignment="Left" Margin="67,5,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="2" Height="41" Width="79" Grid.RowSpan="2"/>
+        <TextBox x:Name="poisk" Grid.Column="2" HorizontalAlignment="Left" Height="48" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TextChanged="poisk_TextChanged" Margin="0,1,0,0" Grid.RowSpan="2"/>
+        <DataGrid HorizontalAlignment="Left" Height="210" Grid.Row="3" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="3"/>
+        <Grid HorizontalAlignment="Left" Height="52" Margin="0,210,0,0" Grid.Row="3" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="3" Background="#FFAAFF97"/>
+        <ComboBox x:Name="kategoria" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="241" Height="48" SelectionChanged="kategoria_SelectionChanged"/>
+        <ComboBox x:Name="sortirovka" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="305" Height="48" Margin="-9,0,0,0" SelectionChanged="sortirovka_SelectionChanged"/>
+        <DataGrid ItemsSource="{Binding SomDataTable}" x:Name="sport" HorizontalAlignment="Left" Height="205" Grid.Row="3" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="3" Margin="0,6,0,0"/>
+        <Label x:Name="zapisi" Content="Количество товаров" HorizontalAlignment="Left" Margin="0,211,0,0" Grid.Row="3" VerticalAlignment="Top" Width="547" Height="41" Grid.ColumnSpan="2"/>
+        <Button x:Name="zakaz" Content="Сделать заказ" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Height="52" Click="zakaz_Click" Margin="0,210,0,0" Grid.Row="3"/>
+
+    </Grid>
+</Window>
