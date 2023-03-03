@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище OOOMuscleModelContainer" CdmEntityContainer="OOOMuscle">
+    <EntitySetMapping Name="Address">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressName" ColumnName="AddressName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="DataZakaza" ColumnName="DataZakaza" />
+          <ScalarProperty Name="DataDostavki" ColumnName="DataDostavki" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Postavshik">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Postavshik">
+        <MappingFragment StoreEntitySet="Postavshik">
+          <ScalarProperty Name="PostavshikID" ColumnName="PostavshikID" />
+          <ScalarProperty Name="PostavshikName" ColumnName="PostavshikName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Sale" ColumnName="Sale" />
+          <ScalarProperty Name="ProizvoditelID" ColumnName="ProizvoditelID" />
+          <ScalarProperty Name="PostavshikID" ColumnName="PostavshikID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proizvoditel">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Proizvoditel">
+        <MappingFragment StoreEntitySet="Proizvoditel">
+          <ScalarProperty Name="ProizvoditelID" ColumnName="ProizvoditelID" />
+          <ScalarProperty Name="ProizvodilelName" ColumnName="ProizvodilelName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sostav">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Sostav">
+        <MappingFragment StoreEntitySet="Sostav">
+          <ScalarProperty Name="NomerID" ColumnName="NomerID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="OOOMuscleModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="OOOMuscleModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

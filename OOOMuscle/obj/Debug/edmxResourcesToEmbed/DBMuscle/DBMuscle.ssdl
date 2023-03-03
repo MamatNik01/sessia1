@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище OOOMuscleModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="int" Nullable="false" />
+    <Property Name="AddressName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="DataZakaza" Type="date" Nullable="false" />
+    <Property Name="DataDostavki" Type="date" Nullable="false" />
+    <Property Name="FIO" Type="varchar(max)" Nullable="false" />
+    <Property Name="Code" Type="int" Nullable="false" />
+    <Property Name="AddressID" Type="int" Nullable="false" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Postavshik">
+    <Key>
+      <PropertyRef Name="PostavshikID" />
+    </Key>
+    <Property Name="PostavshikID" Type="int" Nullable="false" />
+    <Property Name="PostavshikName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+    </Key>
+    <Property Name="ArticleID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Cost" Type="money" Nullable="false" />
+    <Property Name="Sale" Type="int" Nullable="false" />
+    <Property Name="ProizvoditelID" Type="int" Nullable="false" />
+    <Property Name="PostavshikID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Photo" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proizvoditel">
+    <Key>
+      <PropertyRef Name="ProizvoditelID" />
+    </Key>
+    <Property Name="ProizvoditelID" Type="int" Nullable="false" />
+    <Property Name="ProizvodilelName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sostav">
+    <Key>
+      <PropertyRef Name="NomerID" />
+    </Key>
+    <Property Name="NomerID" Type="int" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="ArticleID" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="StatusName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="varchar(max)" Nullable="false" />
+    <Property Name="Login" Type="varchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Order_OrderZakaz">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Sostav" Type="Self.Sostav" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Sostav">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderZakaz_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderZakaz_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Postavshik">
+    <End Role="Postavshik" Type="Self.Postavshik" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Postavshik">
+        <PropertyRef Name="PostavshikID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="PostavshikID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Proizvoditel">
+    <End Role="Proizvoditel" Type="Self.Proizvoditel" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvoditel">
+        <PropertyRef Name="ProizvoditelID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProizvoditelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sostav_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Sostav" Type="Self.Sostav" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ArticleID" />
+      </Principal>
+      <Dependent Role="Sostav">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище OOOMuscleModelContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Postavshik" EntityType="Self.Postavshik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proizvoditel" EntityType="Self.Proizvoditel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sostav" EntityType="Self.Sostav" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Order_OrderZakaz" Association="Self.FK_Order_OrderZakaz">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Sostav" EntitySet="Sostav" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderZakaz_Address" Association="Self.FK_OrderZakaz_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderZakaz_Status" Association="Self.FK_OrderZakaz_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Postavshik" Association="Self.FK_Product_Postavshik">
+      <End Role="Postavshik" EntitySet="Postavshik" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Proizvoditel" Association="Self.FK_Product_Proizvoditel">
+      <End Role="Proizvoditel" EntitySet="Proizvoditel" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sostav_Product" Association="Self.FK_Sostav_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Sostav" EntitySet="Sostav" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
